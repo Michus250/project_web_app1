@@ -1,0 +1,15 @@
+{
+    "Name": "Imię",
+    "Surname": "Nazwisko",
+    "Address": "Adres zamiekszania",
+    "Email": "Adres email",
+    "Password": "Hasło",
+    "ConfirmPassword":"Powtórz hasło",
+    "Register":"Zarejestruj",
+    "personalIdNumber":"Pesel",
+    "day":"Dzień urodzenia",
+    "year":"Rok urodzenia",
+    "month":"Miesiąc urodzenia",
+    "phoneNumber":"Telefon"
+
+}

@@ -50,9 +50,18 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:25'],
+            'surname' => ['required', 'string', 'max:25'],
+            'personal_id_number' => ['required', 'string','unique:users'],
+            'day' => ['required'],
+            'month' => ['required'],
+            'year' => ['required'],
+            'address' => ['required'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'phoneNumber' => ['required'],
+            
+            'password' => ['required', 'string', 'min:4', 'confirmed'],
+
         ]);
     }
 
@@ -64,10 +73,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $zm= $data['day'] . "-" . $data['month'] . "-" . $data['year'];
+        $date = new DateTime($zm,'d-m-Y');
         return User::create([
             'name' => $data['name'],
+            'surname' => $data['surname'],
+            'personal_id_number' => $data['personalIdNumber'],
+            'address' => $data['address'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'date_of_birth' => $date->format("d-m-Y"),
+            'status' => 1
         ]);
     }
 }
