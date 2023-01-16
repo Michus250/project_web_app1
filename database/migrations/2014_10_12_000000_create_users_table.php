@@ -20,10 +20,10 @@ return new class extends Migration
             $table->string('personal_id_number',11)->unique();
             $table->date('date_of_birth');
             $table->string('address');
-            $table->string('phone_number');
+            $table->string('phone_number',9);
             $table->string('email',)->unique();
             
-            $table->string('password',30);
+            $table->string('password');
             $table->tinyInteger('status');
             $table->timestamps();
         });

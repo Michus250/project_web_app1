@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use DateTime;
 
 class RegisterController extends Controller
 {
@@ -49,18 +50,19 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:25'],
-            'surname' => ['required', 'string', 'max:25'],
-            'personal_id_number' => ['required', 'string','unique:users'],
-            'day' => ['required'],
-            'month' => ['required'],
-            'year' => ['required'],
-            'address' => ['required'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'phoneNumber' => ['required'],
+            "name" => ['required', 'string', 'max:25'],
+            "surname"  => ['required', 'string', 'max:25'],
+            "personal_id_number" => ['required', 'string','unique:App\Models\User,personal_id_number','size:11'],
+            "day" => ['required','int'],
+            "month" => ['required','int'],
+            "year" => ['required','int'],
+            'address' => ['required', 'string','min:2'],
+            "email" => ['required', 'string', 'email', 'max:255', 'unique:App\Models\User,email'],
+            "phone_number" => ['required','size:9','string'],
             
-            'password' => ['required', 'string', 'min:4', 'confirmed'],
+            "password" => ['required', 'string', 'min:4', 'confirmed'],
 
         ]);
     }
@@ -73,16 +75,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $zm= $data['day'] . "-" . $data['month'] . "-" . $data['year'];
-        $date = new DateTime($zm,'d-m-Y');
+        $date = new DateTime();
+        $date->setDate($data["year"],$data["month"],$data["day"]);
+        
+       
         return User::create([
             'name' => $data['name'],
             'surname' => $data['surname'],
-            'personal_id_number' => $data['personalIdNumber'],
-            'address' => $data['address'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'date_of_birth' => $date->format("d-m-Y"),
+            'personal_id_number' => $data["personal_id_number"],
+            'phone_number' => $data["phone_number"],
+            'address' => $data["address"],
+            'email' => $data["email"],
+            'password' => Hash::make($data["password"]),
+            
+            'date_of_birth' => $date,
             'status' => 1
         ]);
     }
