@@ -10,6 +10,9 @@
     "day":"Dzień urodzenia",
     "year":"Rok urodzenia",
     "month":"Miesiąc urodzenia",
-    "phoneNumber":"Telefon"
+    "phoneNumber":"Telefon",
+    "Login":"Zaloguj",
+    "dateOfBirth": "Data urodzenia",
+    "now": "data dzisiejsza"
 
 }

@@ -9,6 +9,8 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use DateTime;
+use App\Enum\UsersRole;
+
 
 class RegisterController extends Controller
 {
@@ -50,14 +52,12 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        
+        $date =strtotime("1 January 1910");
         return Validator::make($data, [
-            "name" => ['required', 'string', 'max:25'],
+            "name" => ['required', 'string', 'max:25','regex:/^[A-ZŻŹŁĆŚ]{1}[a-zżćńłąśęó]/'],
             "surname"  => ['required', 'string', 'max:25','regex:/^[A-ZŻŹŁĆŚ]{1}[a-zżćńłąśęó]/'],
             "personal_id_number" => ['required', 'string','unique:App\Models\User,personal_id_number','regex:/^[0-9]/','size:11'],
-            "day" => ['required','int','max:31','min:1'],
-            "month" => ['required','int','max:12','min:1'],
-            "year" => ['required','int','max:2023','min:1910'],
+            "date_of_birth" => ['required',"after:$date","before:now"],
             'address' => ['required', 'string','min:2'],
             "email" => ['required', 'string', 'email', 'max:255', 'unique:App\Models\User,email'],
             "phone_number" => ['required','regex:/^[0-9]/','string','size:9'],
@@ -75,8 +75,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $date = new DateTime();
-        $date->setDate($data["year"],$data["month"],$data["day"]);
+       
         
        
         return User::create([
@@ -88,8 +87,8 @@ class RegisterController extends Controller
             'email' => $data["email"],
             'password' => Hash::make($data["password"]),
             
-            'date_of_birth' => $date,
-            'status' => 1
+            'date_of_birth' => $data["date_of_birth"],
+            'status' => UsersRole::USER,
         ]);
     }
 }

@@ -99,7 +99,9 @@ return array(
         'address' => "Adres zamieszakania",
         "email" => "Email",
 	    "phone_number" =>  "Telefon",   
-        "password" => "Hasło"
+        "password" => "Hasło",
+		"date_of_birth"=> "Data urodzenia",
+		"now"=> "data dzisiejsza"
 	),
 
 );

@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('email',)->unique();
             
             $table->string('password');
-            $table->tinyInteger('status');
+            $table->enum('status',['user','admin','employee','doctor']);
             $table->timestamps();
         });
     }

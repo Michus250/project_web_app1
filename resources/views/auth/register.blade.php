@@ -79,12 +79,12 @@
                         
                         
                         <div class="row mb-3">
-                            <label for="day" class="col-md-4 col-form-label text-md-end">{{ __('day') }}</label>
+                            <label for="date_of_birth" class="col-md-4 col-form-label text-md-end">{{ __('dateOfBirth') }}</label>
 
                             <div class="col-md-6">
-                                <input id="day" type="text" class="form-control @error('day') is-invalid @enderror" name="day" value="{{ old('day') }}"  autocomplete="day" autofocus>
+                                <input id="date_of_birth" type="date" class="form-control @error('date_of_birth') is-invalid @enderror" name="date_of_birth" value="{{ old('date_of_birth') }}"  autocomplete="date_of_birth" autofocus>
 
-                                @error('day')
+                                @error('date_of_birth')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -93,34 +93,7 @@
                         </div>
                         
                         
-                        <div class="row mb-3">
-                            <label for="month" class="col-md-4 col-form-label text-md-end">{{ __('month') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="month" type="text" class="form-control @error('month') is-invalid @enderror" name="month" value="{{ old('month') }}"  autocomplete="month" autofocus>
-
-                                @error('month')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>    
-                        
                        
-                        <div class="row mb-3">
-                            <label for="year" class="col-md-4 col-form-label text-md-end">{{ __('year') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="year" type="text" class="form-control @error('year') is-invalid @enderror" name="year" value="{{ old('year') }}"  autocomplete="year" autofocus>
-
-                                @error('year')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>    
                         
                         
                         <div class="row mb-3">

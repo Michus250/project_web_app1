@@ -18,5 +18,11 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/index',[App\Http\Controllers\UserController::class, 'index'])->middleware('can:isAdmin');
+    Route::get('/create',[App\Http\Controllers\UserController::class, 'createEmployee'])->middleware('can:isAdmin');
+});
+
+    
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
