@@ -53,14 +53,14 @@ class RegisterController extends Controller
         
         return Validator::make($data, [
             "name" => ['required', 'string', 'max:25'],
-            "surname"  => ['required', 'string', 'max:25'],
-            "personal_id_number" => ['required', 'string','unique:App\Models\User,personal_id_number','size:11'],
-            "day" => ['required','int'],
-            "month" => ['required','int'],
-            "year" => ['required','int'],
+            "surname"  => ['required', 'string', 'max:25','regex:/^[A-ZŻŹŁĆŚ]{1}[a-zżćńłąśęó]/'],
+            "personal_id_number" => ['required', 'string','unique:App\Models\User,personal_id_number','regex:/^[0-9]/','size:11'],
+            "day" => ['required','int','max:31','min:1'],
+            "month" => ['required','int','max:12','min:1'],
+            "year" => ['required','int','max:2023','min:1910'],
             'address' => ['required', 'string','min:2'],
             "email" => ['required', 'string', 'email', 'max:255', 'unique:App\Models\User,email'],
-            "phone_number" => ['required','size:9','string'],
+            "phone_number" => ['required','regex:/^[0-9]/','string','size:9'],
             
             "password" => ['required', 'string', 'min:4', 'confirmed'],
 
