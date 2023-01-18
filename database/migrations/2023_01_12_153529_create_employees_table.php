@@ -18,7 +18,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')
             ->onDelete('cascade');
            
-            $table->json('work_hours');
+            $table->json('work_hours')->nullable();
+            $table->timestamps();
             
             
         });

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignId('employee_id')->constrained('employees')->onUpdate('cascade')
             ->onDelete('cascade');
             $table->date('date');
+            $table->timestamps();
 
             
         });

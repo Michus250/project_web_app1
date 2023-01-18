@@ -15,6 +15,7 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
 </head>
 <body>
     <div id="app">
@@ -30,7 +31,15 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{asset("/")}}">{{ __('home') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{asset("/contact")}}">{{ __('contact') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{asset("reception_hours")}}">{{ __('reception_hours') }}</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -60,9 +69,14 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{asset('/create')}}">
+                                    @can('isAdmin')
+                                    <a class="dropdown-item" href="{{asset('/createUser')}}">
                                      {{ __('create_employee') }}
                                  </a>
+                                 @endcan
+                                 <a class="dropdown-item" href="{{asset('/changeData')}}">
+                                    {{ __('change_data') }}
+                                </a>
                                     
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -80,5 +94,9 @@
             @yield('content')
         </main>
     </div>
+ 
+
 </body>
+
+
 </html>

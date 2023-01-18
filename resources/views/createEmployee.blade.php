@@ -7,8 +7,7 @@
     @foreach ($users as $item)
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <form action="" method="post">
-                @csrf
+            
                 <div class="row mb-3">
                     <label for="status" class="col-md-4 col-form-label text-md-end">{{$item->email }} </label>
 
@@ -24,10 +23,11 @@
                             
                             
                         </select>
-                        <button class="btn btn-primary">Utworz pracownika</button>
+                        <button class="btn btn-primary" id="{{$item->id}}" name="changeButton" data-id ={{$item->id}}>{{__('Create employee')}}</button>
                     </div>
                     
-            </form>
+           
+            
     </div>
     </div>
         <br>
@@ -35,3 +35,11 @@
   
 </div>
 @endsection
+
+@section('js')
+    
+    
+@endsection
+{{-- <script src= {{asset("js/app.js")}}></script>  --}}
+
+

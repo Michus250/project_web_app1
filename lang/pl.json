@@ -13,6 +13,10 @@
     "phoneNumber":"Telefon",
     "Login":"Zaloguj",
     "dateOfBirth": "Data urodzenia",
-    "now": "data dzisiejsza"
+    "now": "data dzisiejsza",
+    "reception_hours": "Godziny przyjęć",
+    "contact": "Kontakt",
+    "home": "O nas",
+    "Create employee":"Dodaj pracownika"
 
 }
