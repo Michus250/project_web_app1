@@ -17,6 +17,6 @@
     "reception_hours": "Godziny przyjęć",
     "contact": "Kontakt",
     "home": "O nas",
-    "Create employee":"Dodaj pracownika"
-
+    "Create employee":"Dodaj pracownika",
+    "dateFormat":"d-m-Y"
 }

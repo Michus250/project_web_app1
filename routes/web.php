@@ -20,10 +20,16 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/index',[App\Http\Controllers\UserController::class, 'index'])->middleware('can:isAdmin');
-    Route::get('/createUser',[App\Http\Controllers\UserController::class, 'createEmployee'])->middleware('can:isAdmin');
-    Route::post('/createUser',[App\Http\Controllers\EmployeeControler::class, 'createEmployee'])->middleware('can:isAdmin');
-    // Route::post('/laravel-fetch-example',[App\Http\Controllers\UserController::class, 'createEmployeeRecord'])->middleware('can:isAdmin');
+    
+    Route::middleware('can:isAdmin')->group(function () {
+
+        Route::get('/createUser',[App\Http\Controllers\UserController::class, 'createEmployee']);
+        Route::post('/createUser',[App\Http\Controllers\EmployeeControler::class, 'createEmployee']);
+        Route::get('/showAll',[App\Http\Controllers\UserController::class, 'showAll']);
+
+    });
+    
+
     Route::get('/changeData',[App\Http\Controllers\UserController::class, 'changeData']);
     Route::post('/changeData',[App\Http\Controllers\UserController::class, 'changeUserData']);
     Route::post('/getDataUser',[App\Http\Controllers\UserController::class, 'changeUserData']);

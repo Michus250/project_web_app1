@@ -14,7 +14,7 @@ class UserController extends Controller
     }
     public function createEmployee(){
         $users = User::all();
-        return view('createEmployee',['users'=>$users,'status'=>UsersRole::TYPES]);
+        return view('admin.createEmployee',['users'=>$users,'status'=>UsersRole::TYPES]);
     }
     public function changeData(){
         $user = Auth::user();
@@ -37,10 +37,10 @@ class UserController extends Controller
           return redirect(asset('/changeData'));
 
         }
-    public function createEmployeeRecord(Request $req){
-        $name = $req->get('name');
-        // $number = $request->get('number');
-        return redirect(asset('/'));
+   
+    public function showAll(){
+        $users = User::all();
+        return view('admin.showALL',['users'=>$users]);
     }
     
 }

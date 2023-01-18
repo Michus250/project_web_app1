@@ -73,6 +73,9 @@
                                     <a class="dropdown-item" href="{{asset('/createUser')}}">
                                      {{ __('create_employee') }}
                                  </a>
+                                 <a class="dropdown-item" href="{{asset('/showAll')}}">
+                                    {{ __('show_all') }}
+                                </a>
                                  @endcan
                                  <a class="dropdown-item" href="{{asset('/changeData')}}">
                                     {{ __('change_data') }}

@@ -62,6 +62,6 @@
   
   
 
-{{$user->email}}  
-</div>
+
+
 @endsection
