@@ -28,6 +28,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/showAll',[App\Http\Controllers\UserController::class, 'showAll']);
 
     });
+    Route::middleware(['can:isDoctor'])->group(function () {
+        Route::get('/changeHours',[App\Http\Controllers\EmployeeControler::class, 'changeHoursDoctor']);
+        Route::post('/changeHours',[App\Http\Controllers\EmployeeControler::class, 'changeHoursJson']);
+        
+    });
     
 
     Route::get('/changeData',[App\Http\Controllers\UserController::class, 'changeData']);

@@ -18,5 +18,7 @@
     "contact": "Kontakt",
     "home": "O nas",
     "Create employee":"Dodaj pracownika",
-    "dateFormat":"d-m-Y"
+    "dateFormat":"d-m-Y",
+    "week_day":"Dzień tygodnia",
+    "Working":"Pracuje"
 }

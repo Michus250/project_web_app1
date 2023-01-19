@@ -42,5 +42,8 @@ class UserController extends Controller
         $users = User::all();
         return view('admin.showALL',['users'=>$users]);
     }
+    public function changeHours(){
+        return view('doctor.changeHours');
+    }
     
 }

@@ -77,6 +77,11 @@
                                     {{ __('show_all') }}
                                 </a>
                                  @endcan
+                                 @can('isDoctor')
+                                 <a class="dropdown-item" href="{{asset('/changeHours')}}">
+                                    {{ __('change_hours') }}
+                                </a>
+                                 @endcan
                                  <a class="dropdown-item" href="{{asset('/changeData')}}">
                                     {{ __('change_data') }}
                                 </a>

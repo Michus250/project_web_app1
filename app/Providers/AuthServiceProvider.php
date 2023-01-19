@@ -33,6 +33,12 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('isUser',function ($user){
             return $user->status == UsersRole::USER;
         });
+        Gate::define('isDoctor',function ($user){
+            return $user->status == UsersRole::DOCTOR;
+        });
+        Gate::define('isEmployee',function ($user){
+            return $user->status == UsersRole::EMPLOYEE;
+        });
         
     }
     
