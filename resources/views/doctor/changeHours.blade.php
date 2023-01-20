@@ -13,18 +13,18 @@
                         @csrf
                         <table class="table">
                             <thead>
-                              <tr>
-                                <th scope="col" class="text-center">{{__("week_day")}}</th>
-                                <th scope="col" class="text-center">{{__("reception_hours")}}</th>
-                                <th scope="col" class="text-center">{{__("Working")}}</th>
+                              <tr class="text-center">
+                                <th scope="col" class="align-middle">{{__("week_day")}}</th>
+                                <th scope="col" class="align-middle" >{{__("Work hours start")}}</th>
+                                <th scope="col" class="align-middle" >{{__("Work hours end")}}</th>
+                                
+                                <th scope="col" class="align-middle">{{__("Working")}}</th>
                                 
                               
                                
-                              </tr>
+                          
                             </thead>
-                            @php
-                                $days = [__('Monday'),__('Tuesday'),__('Wensday'),__('Thursday'),__('Friday'),__('Saturday'),__('Sunday')];
-                            @endphp
+                           
                             <tbody>
                                    @foreach ($work_hours as $key=> $item)
                                    <tr class="text-center">
@@ -32,17 +32,37 @@
                                     <td class="align-middle">
                                     {{$key}}
                                     </td>
-                                    <td class="align-middle">
-                                        <div>
-                                            <input id="open" type="text" class="form-control" name="open" value="{{$item['open']}}">
-                                            <input id="close" type="text" class="form-control" name="close" value="{{$item['close']}}">
-
-                                        </div>
-                                        @if ($item['isWorking'] === 'true')
-                                           
-                                        @endif    
+                                    
+                                     <td class="align-middle col-3">
+                                       
+                                        <input type="text" class="form-control col-3 timepicker" id="open" type="text" class="form-control" name="open"
                                         
-                                    </td>
+                                        @if ($item["isWorking"] === 'false')
+                                            disabled
+                                            value="" 
+                                        @else
+                                            value="{{$item['open']}}"
+                                        @endif
+                                        >
+                                    </td>  
+                                    <td class="align-middle col-3">
+                                        
+                                        <input  class="form-control " id="close" type="text" class="form-control" name="close"
+                                        @if ($item["isWorking"] === 'false')
+                                            disabled
+                                            value="" 
+                                        @else
+                                            value="{{$item['close']}}"
+                                        @endif>
+                                        
+                                    </td>    
+                                           
+                                        
+                                            
+                                        
+                                      
+                                        
+                                    
                                     <td class="align-middle">
                                    
                                     <input type="checkbox" id="{{$key}}" name="{{$key}}" value="true" @if ($item['isWorking'] === 'true')

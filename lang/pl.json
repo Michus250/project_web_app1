@@ -20,5 +20,7 @@
     "Create employee":"Dodaj pracownika",
     "dateFormat":"d-m-Y",
     "week_day":"Dzień tygodnia",
-    "Working":"Pracuje"
+    "Working":"Pracuje",
+    "Work hours start": "Godzina rozpoczęcia",
+    "Work hours end":"Godzina zakończenia"
 }

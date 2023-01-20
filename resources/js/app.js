@@ -2,6 +2,8 @@ import './bootstrap';
 
 
 
+
+$('.timepicker').timepicker();
 var button = document.getElementsByName('changeButton')
 // button.onclick = function() {
 //     alert('wcisnieto przycisk');
