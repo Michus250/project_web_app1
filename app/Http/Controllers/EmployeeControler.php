@@ -31,10 +31,34 @@ class EmployeeControler extends Controller
             ];
             
         }
+        else{
+            $work_hours = $employee->work_hours;
+            $work_hours = json_decode($work_hours, true); 
+        }
 
         return view('doctor.changeHours',['employee'=>$employee,'user'=>$user,'work_hours'=>$work_hours]);
     }
-    public function changeHoursDoctorJson(){
+    public function changeHoursDoctorJson(Request $req){
+        $days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+        $i=0;
+        $data = [];
+        // $data = $req->all();
+        // dd($data);
+        // dd($req);
+        foreach($days as $item){
+            
+            $data = array_merge($data,[$item=>['open'=>$req["open.$i"], 'close'=>$req["close.$i"], 'isWorking'=>$req["isWorking.$i"]]]);
+
+            
+            $i+=1;
+        }
+        // dd($data);
+        $data = json_encode($data);
+       
+        $employee = Employee::where('user_id',Auth::user()->id)->first();
+        
+        $employee->update(['work_hours'=>$data]);
+        return redirect(asset('/changeHours'));
         
     }
     

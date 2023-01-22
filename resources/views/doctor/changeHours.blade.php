@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-@vite(['resources/js/changeHours.js'])
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -10,8 +10,7 @@
 
                 <div class="card-body">
                     
-                    <form method="POST" action="{{ asset('changeHours') }}">
-                        @csrf
+                    
                         <table class="table">
                             <thead>
                               <tr class="text-center">
@@ -25,7 +24,8 @@
                                
                           
                             </thead>
-                           
+                            <form method="POST" action="{{ asset('changeHours') }}" id="form" name="form">
+                                @csrf
                             <tbody>
                                 @php
                                     $i = 0;
@@ -39,38 +39,40 @@
                                     
                                      <td class="align-middle col-3">
                                        
-                                        <input type="text" class="form-control col-3 timepicker open" id="open{{$i}}" type="text" class="form-control" name="open"
+                                        <input  class="form-control col-3 timepicker open" id="open{{$i}}"  class="form-control" name="open[]"
                                         
                                         @if ($item["isWorking"] === 'false')
-                                            disabled
-                                            value="" 
+                                            type ="hidden"
+                                            value=""
+                                            required ="false" 
                                         @else
+                                            type="text"
                                             value="{{$item['open']}}"
+                                            required ="true"
                                         @endif
                                         >
                                     </td>  
                                     <td class="align-middle col-3">
                                         
-                                        <input  class="form-control timepicker close" id="close{{$i}}" type="text"  name="close"
+                                        <input  class="form-control timepicker close" id="close{{$i}}"   name="close[]"
                                         @if ($item["isWorking"] === 'false')
-                                            disabled
+                                            type ="hidden"
                                             value="" 
+                                            required ="false"
                                         @else
+                                            type="text"
                                             value="{{$item['close']}}"
+                                            required ="true"
                                         @endif>
                                         
                                     </td>    
-                                           
-                                        
-                                            
-                                        
-                                      
-                                        
-                                    
                                     <td class="align-middle">
                                    
-                                    <input type="checkbox" class="disableInput checkbox" id="{{$i}}" name="isWorking" value="true" @if ($item['isWorking'] === 'true')
+                                    <input type="checkbox" class=" checkbox" id="{{$i}}" name="isWorking[{{$i}}]"  @if ($item['isWorking'] === 'true')
                                         checked
+                                        value="true"
+                                    @else
+                                        value="false"
                                     @endif>
                                     @php
                                         $i+= 1;
@@ -82,22 +84,16 @@
                                   
                             </tbody>
                         </table>
+
                         <div class = "d-flex align-items-center justify-content-center">
                             <button type="submit" class="btn btn-primary ">{{__("Submit")}}</td>
                         </div>
-                        
-                                
-                                   
-                                    
-                                
-
-
-
-                       
+   
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+@vite(['resources/js/changeHours.js'])
 @endsection

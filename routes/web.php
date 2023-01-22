@@ -30,7 +30,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
     Route::middleware(['can:isDoctor'])->group(function () {
         Route::get('/changeHours',[App\Http\Controllers\EmployeeControler::class, 'changeHoursDoctor']);
-        Route::post('/changeHours',[App\Http\Controllers\EmployeeControler::class, 'changeHoursJson']);
+        Route::post('/changeHours',[App\Http\Controllers\EmployeeControler::class, 'changeHoursDoctorJson']);
+        
         
     });
     

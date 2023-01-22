@@ -13,7 +13,7 @@ class Employee extends Model
     use HasFactory;
     protected $fillable = [
         'user_id' ,
-        'work_hours'
+        'work_hours',
     ];
 
     public function user()
