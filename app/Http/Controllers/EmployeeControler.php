@@ -21,13 +21,13 @@ class EmployeeControler extends Controller
         $employee = $user->employee;
         if ($employee->work_hours === null){
             $work_hours = [
-                'Monday' => ['open' => '9:00 AM', 'close' => '5:00 PM','isWorking'=>'true'],
-                'Tuesday' => ['open' => '9:00 AM', 'close' => '5:00 PM','isWorking'=>'true'],
-                'Wednesday' => ['open' => '9:00 AM', 'close' => '5:00 PM','isWorking'=>'true'],
-                'Thursday' => ['open' => '9:00 AM', 'close' => '5:00 PM','isWorking'=>'true'],
-                'Friday' => ['open' => '9:00 AM', 'close' => '5:00 PM','isWorking'=>'true'],
-                'Saturday' => ['open' => '9:00 AM', 'close' => '2:00 PM','isWorking'=>'true'],
-                'Sunday' => ['open' => 'Closed', 'close' => 'Closed','isWorking'=>'false'],
+                'Monday' => ['open' => '09:00', 'close' => '17:00','isWorking'=>'true'],
+                'Tuesday' => ['open' => '09:00', 'close' => '17:00','isWorking'=>'true'],
+                'Wednesday' => ['open' => '09:00', 'close' => '17:00','isWorking'=>'true'],
+                'Thursday' => ['open' => '09:00', 'close' => '17:00','isWorking'=>'true'],
+                'Friday' => ['open' => '09:00', 'close' => '17:00','isWorking'=>'true'],
+                'Saturday' => ['open' => '09:00', 'close' => '14:00','isWorking'=>'true'],
+                'Sunday' => ['open' => '00:00', 'close' => '00:00','isWorking'=>'false'],
             ];
             
         }

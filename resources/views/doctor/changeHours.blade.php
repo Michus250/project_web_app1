@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@vite(['resources/js/changeHours.js'])
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -26,6 +27,9 @@
                             </thead>
                            
                             <tbody>
+                                @php
+                                    $i = 0;
+                                @endphp
                                    @foreach ($work_hours as $key=> $item)
                                    <tr class="text-center">
                                     
@@ -35,7 +39,7 @@
                                     
                                      <td class="align-middle col-3">
                                        
-                                        <input type="text" class="form-control col-3 timepicker" id="open" type="text" class="form-control" name="open"
+                                        <input type="text" class="form-control col-3 timepicker open" id="open{{$i}}" type="text" class="form-control" name="open"
                                         
                                         @if ($item["isWorking"] === 'false')
                                             disabled
@@ -47,7 +51,7 @@
                                     </td>  
                                     <td class="align-middle col-3">
                                         
-                                        <input  class="form-control " id="close" type="text" class="form-control" name="close"
+                                        <input  class="form-control timepicker close" id="close{{$i}}" type="text"  name="close"
                                         @if ($item["isWorking"] === 'false')
                                             disabled
                                             value="" 
@@ -65,20 +69,23 @@
                                     
                                     <td class="align-middle">
                                    
-                                    <input type="checkbox" id="{{$key}}" name="{{$key}}" value="true" @if ($item['isWorking'] === 'true')
+                                    <input type="checkbox" class="disableInput checkbox" id="{{$i}}" name="isWorking" value="true" @if ($item['isWorking'] === 'true')
                                         checked
                                     @endif>
+                                    @php
+                                        $i+= 1;
+                                    @endphp
                                       </td>
                                    
                                   </tr>    
                                    @endforeach
-                                   <tr class="text-center">
-                                    <td class="align-middle"><button type="submit" class="btn btn-primary">{{__("Submit")}}</td>
-                                    <td></td>
-                                    <td></td>
-                                   </tr>
+                                  
                             </tbody>
                         </table>
+                        <div class = "d-flex align-items-center justify-content-center">
+                            <button type="submit" class="btn btn-primary ">{{__("Submit")}}</td>
+                        </div>
+                        
                                 
                                    
                                     
@@ -86,47 +93,7 @@
 
 
 
-                        {{-- <div class="row mb-3">
-                            <label for="address" class="col-md-4 col-form-label text-md-end">{{ __('Address') }}</label>
-
-                            <div class="col-md-6">
-                                
-                                <select name="hourStart" id="hourStart">
-                                    @for ($i = 0; $i < 24; $i++)
-                                       @if ($i<10)
-                                       <option value="0{{$i}}">0{{$i}}</option>
-                                       @else
-                                       <option value="{{$i}}">{{$i}}</option> 
-                                       @endif
-                                        
-                                    @endfor
-                                </select>
-                                <select name="minuteStart" id="minuteStart">
-                                    @for ($i = 0; $i < 59; $i++)
-                                       @if ($i<10)
-                                       <option value="0{{$i}}">0{{$i}}</option>
-                                       @else
-                                       <option value="{{$i}}">{{$i}}</option> 
-                                       @endif
-                                        
-                                    @endfor
-                                </select>
-
-                                @error('address')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div> --}}
-                        {{-- <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div> --}}
-                    
+                       
                     </form>
                 </div>
             </div>

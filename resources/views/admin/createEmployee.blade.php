@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@vite(['resources/js/createEmployee.js'])
 <div class="container">
    
 
