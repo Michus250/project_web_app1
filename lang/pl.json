@@ -30,5 +30,10 @@
     "Friday":"Piątek", 
     "Saturday":"Sobota", 
     "Sunday":"Niedziela",
-    "Submit":"Zatwierdź" 
+    "Submit":"Zatwierdź",
+    "Examination's name":"Nazwa",
+    "Price":"Cena",
+    "Examinations":"Badania",
+    "Edit":"Edytuj",
+    "Add":"Dodaj" 
 }
