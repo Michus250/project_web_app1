@@ -20,28 +20,39 @@ $(document).on('click', '.button-edit', function(){
 $(document).on('click', '.button-change', function(){
     let url = window.location.href;
     let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    console.log(this.id);
-    // fetch(url, {
-    //     headers: {
-    //         "Content-Type": "application/json",
-    //         "Accept": "application/json, text-plain, */*",
-    //         "X-Requested-With": "XMLHttpRequest",
-    //         "X-CSRF-TOKEN": token
-    //         },
-    //     method: 'post',
-    //     credentials: "same-origin",
-    //     body: JSON.stringify({
-    //         id: id,
-    //         status: status
-    //     })
-    // })
-    // .then((data) => {
-    //     window.location.href = window.location.href;
+    
+    let id = parseInt(this.id);
+    let examinationName = $("#nameChange"+id).val();
+    let price = parseFloat($("#priceChange"+id).val()).toFixed(2);
+    
+    console.log(examinationName);
+    console.log(price);
+    fetch(url, {
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json, text-plain, */*",
+            "X-Requested-With": "XMLHttpRequest",
+            "X-CSRF-TOKEN": token
+            },
+        method: 'post',
+        credentials: "same-origin",
+        body: JSON.stringify({
+            id: id,
+            examinationName: examinationName,
+            price: price,
+        })
+    })
+    .then((data) => {
+        if(data.ok){
+            window.location.href = window.location.href;
+          } else {
+            alert('Wystąpił błąd podczas zmiany danych');
+          }
        
-    // })
-    // .catch(function(error) {
-    //     console.log(error);
-    // });
+    })
+    .catch(function(error) {
+        console.log(error);
+    });
 
 
 });

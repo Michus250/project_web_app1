@@ -14,17 +14,26 @@ class ExaminationController extends Controller
         return view("employee.createExamination",['examination'=>$examination]);
     }
     public function createExaminationPost(Request $req){
-        $this->validate(request(), [
-            "examinationName" => ['required', 'string','regex:/^[A-ZŻŹŁĆŚ]{1}[a-zżćńłąśęó]/','unique:App\Models\Medical_examination,name'],
-            "price" => ['required','decimal:2']
-         
-          ]);
         
-        $examination = new Medical_examination();
+        $this->validate(request(), [
+            "examinationName" => ['required', 'string','regex:/^[A-ZŻŹŁĆŚ]{1}[a-zżćńłąśęó]/'],
+            "price" => ['required','decimal:2'],
+            "id" => ['required']
+          ]);
+          
+        if ($req['id'] === "-1"){
+            $examination = new Medical_examination();
+            
+        }
+        else{
+            $examination = Medical_examination::find($req['id']);
+
+        }
         $examination->name = $req['examinationName'];
         $examination->price = $req['price'];
-        // dd($examination);
+        
         $examination->save();
+       
         return redirect('/createExamination');
         
     }

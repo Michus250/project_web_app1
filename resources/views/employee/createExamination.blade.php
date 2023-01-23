@@ -88,7 +88,7 @@
                                         </td>  
          
                                       </tr>     
-                                
+                                      <input type="text" name="id", value = -1 style="display: none;">
                                 </form>
                             </tbody>
                         </table>
