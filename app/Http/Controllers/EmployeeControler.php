@@ -18,7 +18,7 @@ class EmployeeControler extends Controller
     }
     public function changeHoursDoctor(){
         $user = User::find(Auth::user()->id);
-        $employee = $user->employee;
+        $employee = $user->employees;
         if ($employee->work_hours === null){
             $work_hours = [
                 'Monday' => ['open' => '09:00', 'close' => '17:00','isWorking'=>'true'],
@@ -61,5 +61,6 @@ class EmployeeControler extends Controller
         return redirect(asset('/changeHours'));
         
     }
+    
     
 }

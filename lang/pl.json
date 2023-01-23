@@ -22,5 +22,13 @@
     "week_day":"Dzień tygodnia",
     "Working":"Pracuje",
     "Work hours start": "Godzina rozpoczęcia",
-    "Work hours end":"Godzina zakończenia"
+    "Work hours end":"Godzina zakończenia",
+    "Monday": "Poniedziałek",
+    "Tuesday": "Wtorek", 
+    "Wednesday":"Środa", 
+    "Thursday":"Czwartek",
+    "Friday":"Piątek", 
+    "Saturday":"Sobota", 
+    "Sunday":"Niedziela",
+    "Submit":"Zatwierdź" 
 }

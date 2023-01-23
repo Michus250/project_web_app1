@@ -18,7 +18,7 @@ class Employee extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasOne('App\Model\User');
     }
     public function users_examination()
     {

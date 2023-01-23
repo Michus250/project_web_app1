@@ -34,7 +34,7 @@
                                    <tr class="text-center">
                                     
                                     <td class="align-middle">
-                                    {{$key}}
+                                    {{__($key)}}
                                     </td>
                                     
                                      <td class="align-middle col-3">
@@ -43,7 +43,7 @@
                                         
                                         @if ($item["isWorking"] === 'false')
                                             type ="hidden"
-                                            value=""
+                                            value="-"
                                             required ="false" 
                                         @else
                                             type="text"
@@ -57,7 +57,7 @@
                                         <input  class="form-control timepicker close" id="close{{$i}}"   name="close[]"
                                         @if ($item["isWorking"] === 'false')
                                             type ="hidden"
-                                            value="" 
+                                            value="-" 
                                             required ="false"
                                         @else
                                             type="text"

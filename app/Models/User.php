@@ -57,8 +57,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Shedule_visit::class);
     }
-    public function employee()
+    public function employees()
     {
-        return $this->hasOne(Employee::class,'user_id', 'id');
+        return $this->hasOne(Employee::class, 'user_id');
     }
 }
