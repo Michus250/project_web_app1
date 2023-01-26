@@ -55,14 +55,34 @@
                 <div class="card-header">{{ __('History') }}</div>
 
                 <div class="card-body">
-                    
-                    
                     <table class="table">
                         <thead>
-                            
+                            <tr>
+                                <th scope="col" class="align-middle">{{__("Doctor")}}</th>
+                                <th scope="col" class="align-middle">{{__("Examination name")}}</th>
+                                <th scope="col" class="align-middle">{{__("Description")}}</th>
+                                <th scope="col" class="align-middle">{{__("Price")}}</th>
+                                <th scope="col" class="align-middle" >{{__("Date")}}</th>
+                            </tr>
+                        </thead>
                         <tbody  id ="" class="tbody">
+                            @php
+                                $i =0;
+                            @endphp
+                    @foreach ($history as $item)
+                            <tr>
+                                <td>{{$employees[$i]->name}} {{$employees[$i]->surname}}</td>
+                                <td>{{$item->name}}</td>
+                                <td>{{$item->description}}</td>
+                                <td>{{$item->price}}</td>
+                                <td>{{$item->created_at}}</td>
+                            </tr>
               
-                        </tbody>
+                            @php
+                                $i++;
+                            @endphp
+                    @endforeach
+                    </tbody>
                     </table>
         </div>
     </div>

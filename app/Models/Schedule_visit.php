@@ -16,7 +16,7 @@ class Schedule_visit extends Model
     ];
     protected $table = 'shedule_visits';
 
-    public function user()
+    public function users()
     {
         return $this->belongsTo(User::class);
     }

@@ -44,5 +44,8 @@
     "Date":"Data",
     "Examination name": "Nazwa",
     "Description":"Opis",
-    "Agree":"Zatwierdź"
+    "Agree":"Zatwierdź",
+    "change_data":"Zmień dane",
+    "change_hours":"Zmień godziny",
+    "Logout":"Wyloguj"
 }

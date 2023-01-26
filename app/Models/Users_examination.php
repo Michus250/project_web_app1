@@ -9,11 +9,11 @@ class Users_examination extends Model
 {
     use HasFactory;
 
-    public function user()
+    public function users()
     {
         return $this->belongsTo(User::class);
     }
-    public function employee()
+    public function employees()
     {
         return $this->belongsTo(Employee::class);
     }

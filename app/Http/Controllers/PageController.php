@@ -8,6 +8,7 @@ use App\Models\Employee;
 use Carbon\Carbon;
 use App\Models\Schedule_visit;
 use App\Models\Medical_examination;
+use App\Models\Users_examination;
 use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
@@ -35,13 +36,26 @@ class PageController extends Controller
     }
     public function userExamination(){
         $visits = Schedule_visit::where('user_id',Auth::user()->id)->with('employees')->get();
+        $history = Users_examination::where('user_id',Auth::user()->id)->with('users')->get();
         $doctors = array();
+        $employee = array();
+        $employeeUser= array();
         foreach($visits as $visit){
             $doctors[] = User::find($visit->employees->user_id);
         }
+        // dd($history);
+        foreach($history as $visit){
+            $employee[] = Employee::find($visit->employee_id);
+        }
+        foreach($employee as $visit){
+            $employeeUser[] = User::find($visit->user_id);
+        }
+        // dd($employee);
+
+        // dd($history);
         // dd($doctors);
 
-        return view("userExamination",['visits'=>$visits,'doctors'=>$doctors]);
+        return view("userExamination",['visits'=>$visits,'doctors'=>$doctors,'history'=>$history,'employees'=>$employeeUser]);
     }
 
     public function endExamination(){

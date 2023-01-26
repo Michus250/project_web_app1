@@ -19,10 +19,10 @@ class Employee extends Model
 
     public function users()
     {
-        return $this->hasOne(User::class, 'id');
+        return $this->belongsTo(User::class);
     }
     public function users_examinations()
     {
-        return $this->hasMany(Users_examination::class);
+        return $this->hasMany(Users_examination::class,'employee_id' );
     }
 }
