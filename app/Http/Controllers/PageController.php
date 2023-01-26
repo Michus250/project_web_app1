@@ -10,6 +10,7 @@ use App\Models\Schedule_visit;
 use App\Models\Medical_examination;
 use App\Models\Users_examination;
 use Illuminate\Support\Facades\Auth;
+use DateTime;
 
 class PageController extends Controller
 {
@@ -25,14 +26,39 @@ class PageController extends Controller
     }
     public function createVisit(){
         $doctors = User::where('status','doctor')->with('employees')->get();
+        $visits = Schedule_visit::all();
+        $count = User::where('status',"doctor")->count();
+        // dd($count);
+        $blockedHours = array();
+        $blockedDays = array();
         
+        for($i=0; $i<$count;$i++){
+            $zm = array();
+            $zm1 = array();
+            foreach($visits as $visit){
+                if($visit->employee_id === $doctors[$i]->employees->id){
+                    $date = DateTime::createFromFormat('Y-m-d H:i:s', $visit->date);
+                    $formatted_time = $date->format('H:i');
+                    $zm[]= $formatted_time;
+                    $formatted_time = $date->format('d-m-Y');
+                    $zm1[]=$formatted_time;
+
+                }
+            }
+            
+        $blockedDays[]=$zm1;        
+        $blockedHours[]=$zm;    
+        }
+        $blockedHours = json_encode($blockedHours);
+        $blockedDays = json_encode($blockedDays);
+        // dd($blockedDays);
         $week = array();
         for ($i = 1; $i < 8; $i++) {
         $week[] = Carbon::now()->addDays($i);
         }
         
         
-        return view("createVisit",['doctors'=>$doctors,'date'=>$week]);
+        return view("createVisit",['doctors'=>$doctors,'date'=>$week,'blockedHours'=>$blockedHours,'blockedDays'=>$blockedDays]);
     }
     public function userExamination(){
         $visits = Schedule_visit::where('user_id',Auth::user()->id)->with('employees')->get();

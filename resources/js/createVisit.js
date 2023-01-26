@@ -6,7 +6,12 @@ $("#tbody"+options).show();
 
 
 
-
+var blockedHours = $("#blockedHours").val();
+blockedHours = JSON.parse(blockedHours);
+var blockedDays = $("#blockedDays").val();
+blockedDays = JSON.parse(blockedDays);
+console.log(blockedHours);
+console.log(blockedDays);
 function setTimepicker(){
     var options = $("#doctor").map(function() {
         return $(this).val();
@@ -21,15 +26,29 @@ function setTimepicker(){
     var days = $("[name='day"+options+"']").map(function() {
         return this.value;
       }).get();
+    var dates = $("[name='date"+options+"']").map(function() {
+        return this.value;
+      }).get();
+    console.log(dates);
     
-    
+    let intNumber = parseInt(options);
+    console.log(blockedDays[intNumber]);
+    console.log(intNumber);
     for(let i =0; i<days.length;i++){
-    
+        let arr=[];
+        for(let j=0;j<blockedDays[intNumber].length;j++){
+            if(dates[i] == blockedDays[intNumber][j]){
+                arr.push(blockedHours[intNumber][j]);
+            }
+            
+        }
+        console.log(arr);
         $('.timepicker'+options+days[i]).timepicker({
             timeFormat: 'HH:mm',
             interval: 30,
             minTime: open[i],
             maxTime: close[i],
+            disabledHours: arr,
             dynamic: false,
             dropdown: true,
             scrollbar: true

@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Auth;
 class EmployeeControler extends Controller
 {
     public function createEmployee(Request $req){
+        foreach($req as $item){
+            $item = $item = filter_var($item, FILTER_SANITIZE_STRING);
+        }
         $employee = new Employee;
         $employee->user_id = $req['id'];
         $employee->save();
@@ -27,7 +30,7 @@ class EmployeeControler extends Controller
                 'Thursday' => ['open' => '09:00', 'close' => '17:00','isWorking'=>'true'],
                 'Friday' => ['open' => '09:00', 'close' => '17:00','isWorking'=>'true'],
                 'Saturday' => ['open' => '09:00', 'close' => '14:00','isWorking'=>'true'],
-                'Sunday' => ['open' => '00:00', 'close' => '00:00','isWorking'=>'false'],
+                'Sunday' => ['open' => '-', 'close' => '-','isWorking'=>'false'],
             ];
             
         }
@@ -39,6 +42,9 @@ class EmployeeControler extends Controller
         return view('doctor.changeHours',['employee'=>$employee,'user'=>$user,'work_hours'=>$work_hours]);
     }
     public function changeHoursDoctorJson(Request $req){
+        foreach($req as $item){
+            $item = $item = filter_var($item, FILTER_SANITIZE_STRING);
+        }
         $days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
         $i=0;
         $data = [];

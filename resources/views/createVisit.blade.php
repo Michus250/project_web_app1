@@ -7,6 +7,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <input hidden  id="blockedHours"  value="{{$blockedHours}}">
+            <input hidden  id="blockedDays"  value="{{$blockedDays}}">
             <select name="doctor" id="doctor">
                 @php
                     $id =0;    
@@ -14,7 +16,7 @@
             @foreach ($doctors as $item)
                 
 
-                <option value="{{$item->employees->id}}" name="{{$id}}">Dr {{$item->name}} {{$item->surname}}</option>
+                <option value="{{$id}}" name="{{$id}}">Dr {{$item->name}} {{$item->surname}}</option>
                 @php
                     $id +=1;
                 @endphp
@@ -49,10 +51,13 @@
                            
                             
                         @endphp --}}
+                        @php
+                            $id =0;
+                        @endphp
                         @foreach ($doctors as $doctor)
                          
                         
-                        <tbody style="display:none;" id ="tbody{{$doctor->employees->id}}" class="tbody">
+                        <tbody style="display:none;" id ="tbody{{$id}}" class="tbody">
                          
                              
                          
@@ -76,31 +81,36 @@
                                 <form action="{{asset("/createVisit")}}" method="post">
                                     @csrf
                                  <td class="align-middle col-3">
-                                    <input  class="form-control col-3 timepicker{{$doctor->employees->id}}{{$item1->englishDayOfWeek}}" id="hourbutton{{$doctor->employees->id}}{{$item1->englishDayOfWeek}}" name="hour" autocomplete="off">
+                                    <input  class="form-control col-3 timepicker{{$id}}{{$item1->englishDayOfWeek}}" id="hourbutton{{$id}}{{$item1->englishDayOfWeek}}" name="hour" autocomplete="off">
                                    
                                 </td>
                                 <td>
                                     
                                         
-                                        <input style="display:none;"  name="day"  value="{{$item1->englishDayOfWeek}}">
-                                        <input style="display:none;"  name="id"  value="{{$doctor->employees->id}}">
-                                        <input style="display:none;"  name="date"  value="{{$item1->format('Y-m-d')}}">
+                                        <input style="display:none;" hidden name="day"  value="{{$item1->englishDayOfWeek}}">
+                                        <input style="display:none;"hidden  name="id"  value="{{$doctor->employees->id}}">
+                                        <input style="display:none;" hidden name="date"  value="{{$item1->format('Y-m-d')}}">
                                         
 
-                                    <input type="submit" class="btn btn-primary button-edit my-1 mx-1" name ={{$doctor->employees->id}} value ="{{__("Make an apointment")}}" id="button{{$doctor->employees->id}}{{$item1->englishDayOfWeek}}" >
+                                    <input type="submit" class="btn btn-primary button-edit my-1 mx-1" name ={{$id}} value ="{{__("Make an apointment")}}" id="button{{$id}}{{$item1->englishDayOfWeek}}" >
                                     </form>
-                                    {{-- <button   class="btn btn-primary button-edit my-1 mx-1" name ={{$doctor->employees->id}} value ="{{$item1->format('Y-m-d')}}" id="button{{$doctor->employees->id}}{{$item1->englishDayOfWeek}}" >{{__("Change")}}</button>     --}}
+                                    {{-- <button   class="btn btn-primary button-edit my-1 mx-1" name ={{$id}} value ="{{$item1->format('Y-m-d')}}" id="button{{$id}}{{$item1->englishDayOfWeek}}" >{{__("Change")}}</button>     --}}
                                 </td>  
                                <td style="display:none;">
-                                <input  name="open{{$doctor->employees->id}}" id ="open{{$item1->englishDayOfWeek}}{{$doctor->employees->id}}" value="{{$item['open']}}">
-                                <input  name="close{{$doctor->employees->id}}" id ="close{{$item1->englishDayOfWeek}}{{$doctor->employees->id}}" value="{{$item['close']}}">  
-                                <input  name="day{{$doctor->employees->id}}"  value="{{$item1->englishDayOfWeek}}"> 
-                                <input type="text" id="datebutton{{$doctor->employees->id}}{{$item1->englishDayOfWeek}}" value ="{{$item1->format('Y-m-d')}}">  
+                                <input hidden name="open{{$id}}" id ="open{{$item1->englishDayOfWeek}}{{$id}}" value="{{$item['open']}}">
+                                <input hidden name="close{{$id}}" id ="close{{$item1->englishDayOfWeek}}{{$id}}" value="{{$item['close']}}">  
+                                <input hidden name="day{{$id}}"  value="{{$item1->englishDayOfWeek}}">
+                                <input hidden name="date{{$id}}"  value="{{$item1->format('d-m-Y')}}">
+                                
+                                <input type="text" id="datebutton{{$id}}{{$item1->englishDayOfWeek}}" value ="{{$item1->format('Y-m-d')}}">  
                                 
                             </td>
                                
                               </tr>    
                                @endforeach
+                               @php
+                                   $id++;
+                               @endphp
                                @endforeach
                               
                               

@@ -47,5 +47,7 @@
     "Agree":"Zatwierdź",
     "change_data":"Zmień dane",
     "change_hours":"Zmień godziny",
-    "Logout":"Wyloguj"
+    "Logout":"Wyloguj",
+    "create_employee":"Utwórz pracownika",
+    "show_all":"Pokaż wszystkich"
 }

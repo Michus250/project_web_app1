@@ -15,6 +15,9 @@ use DateTime;
 class ScheludeVisitsController extends Controller
 {
     public function createVisit(Request $req){
+        foreach($req as $item){
+            $item = $item = filter_var($item, FILTER_SANITIZE_STRING);
+        }
         $visit = new Schedule_visit;
         $visit->user_id = Auth::user()->id;
         $visit->employee_id = $req['id'];
@@ -32,6 +35,9 @@ class ScheludeVisitsController extends Controller
     }
     public function endExamination(Request $req){
         // dd($req->all());
+        foreach($req as $item){
+            $item = $item = filter_var($item, FILTER_SANITIZE_STRING);
+        }
         $price =0;
         foreach($req['examinations'] as $item){
             $medical = Medical_examination::find($item);
