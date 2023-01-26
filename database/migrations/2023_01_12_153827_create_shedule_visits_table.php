@@ -19,7 +19,7 @@ return new class extends Migration
             ->onDelete('cascade');
             $table->foreignId('employee_id')->constrained('employees')->onUpdate('cascade')
             ->onDelete('cascade');
-            $table->date('date');
+            $table->dateTime('date');
             $table->timestamps();
 
             

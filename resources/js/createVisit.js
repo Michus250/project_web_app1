@@ -55,7 +55,46 @@ $(document).on('change','#doctor',function(){
 });
 
 
-$(document).on('click', '.button-edit', function(){
-    
+// $(document).on('click', '.button-edit', function(){
+//     let url = window.location.href;
+//     let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-});
+//     let id = this.name;
+//     let date = $("#date"+this.id).val();;
+//     let hour = $("#hour"+this.id).val();
+//     console.log(id);
+//     console.log(date);
+//     console.log(hour);
+//     date = new Date(date);
+//     console.log(date);
+
+//     fetch(url, {
+//         headers: {
+//             "Content-Type": "application/json",
+//             "Accept": "application/json, text-plain, */*",
+//             "X-Requested-With": "XMLHttpRequest",
+//             "X-CSRF-TOKEN": token
+//             },
+//         method: 'post',
+//         credentials: "same-origin",
+//         body: JSON.stringify({
+//             id: id,
+//             date: date,
+            
+//         })
+//     })
+//     .then((data) => {
+//         if(data.ok){
+//             location.reload();
+//           } else {
+//             alert('Wystąpił błąd podczas zamówienia wizyty');
+//           }
+       
+//     })
+//     .catch(function(error) {
+//         console.log(error);
+//     });
+
+
+
+// });

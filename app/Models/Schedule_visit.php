@@ -5,9 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Shedule_visit extends Model
+class Schedule_visit extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'user_id' ,
+        'employee_id',
+        'date',
+    ];
+    protected $table = 'shedule_visits';
 
     public function user()
     {
@@ -17,4 +23,5 @@ class Shedule_visit extends Model
     {
         return $this->belongsTo(Employee::class);
     }
+
 }

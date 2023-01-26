@@ -22,13 +22,13 @@ class PageController extends Controller
     }
     public function createVisit(){
         $doctors = User::where('status','doctor')->with('employees')->get();
-        $currentDate = Carbon::now();
-        $date= [];
-
-        for($i=1; $i<7; $i++) {
-            array_push($date,$currentDate->addDays($i));
+        
+        $week = array();
+        for ($i = 1; $i < 8; $i++) {
+        $week[] = Carbon::now()->addDays($i);
         }
-        // dd($date);
-        return view("createVisit",['doctors'=>$doctors]);
+        
+        
+        return view("createVisit",['doctors'=>$doctors,'date'=>$week]);
     }
 }
