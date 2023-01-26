@@ -30,7 +30,7 @@
                                             <input  style="display: none;" class="form-control @error('examinationName') is-invalid @enderror" id="nameChange{{$item->id}}" value="{{$item->name}}">
                                             
                                             @error('examinationName')
-                                            <span class="invalid-feedback" role="alert">
+                                            <span style="display: none;" class="invalid-feedback" name="error{{$item->id}}"  role="alert">
                                             <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
@@ -41,7 +41,7 @@
                                         <input style="display: none;" class="form-control @error('price') is-invalid @enderror" id="priceChange{{$item->id}}" value="{{$item->price}}"></div>
                                        
                                         @error('price')
-                                           <span class="invalid-feedback" role="alert">
+                                           <span style="display: none;" class="invalid-feedback" name="error{{$item->id}}" role="alert">
                                            <strong>{{ $message }}</strong>
                                            </span>
                                           
@@ -50,7 +50,16 @@
                                     </td>  
                                     <td class="align-middle col-3">
                                         <button class="btn btn-primary button-edit" name ="{{$item->id}}" id="edit{{$item->id}}">{{__("Edit")}}</button>
-                                        <button  style="display: none;" class="btn btn-primary button-change" name ="change" id="{{$item->id}}">{{__("Change")}}</button>
+                                        <div class ="row mx-1">
+                                            
+                                            <button  style="display: none;" class="btn btn-primary button-change my-1 mx-1" name ="change" id="{{$item->id}}">{{__("Change")}}</button>
+                                            
+                                        </div>
+                                        <div class ="row mx-1">
+                                            
+                                            <button  style="display: none;" class="btn btn-danger button-delete my-1 mx-1" name ="{{$item->id}}" id="delete{{$item->id}}">{{__("Delete")}}</button>
+                                        
+                                        </div>
 
                                       
                                     </td>  
@@ -61,7 +70,7 @@
                                     @csrf
                                     <tr class="text-center">
                                     
-                                        <td class="align-middle">
+                                        <td class="align-middle col-4">
                                             <input type="text" class="form-control @error('examinationName') is-invalid @enderror" name="examinationName">
                                             
                                         @error('examinationName')
@@ -72,7 +81,7 @@
                                         
                                         </td>
                                         
-                                         <td class="align-middle col-3">
+                                         <td class="align-middle col-4">
                                            <input type="text" class="form-control @error('price') is-invalid @enderror" name="price">
                                            
                                            @error('price')

@@ -37,4 +37,10 @@ class ExaminationController extends Controller
         return redirect('/createExamination');
         
     }
+    public function deleteExamination(Request $req){
+        $examination = Medical_examination::find($req['id']);
+        $examination->delete();
+        // redirect()->route('createExamination', 301, [], true);
+        // $this->createExamination();
+    }
 }

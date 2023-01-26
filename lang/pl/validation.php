@@ -101,7 +101,9 @@ return array(
 	    "phone_number" =>  "Telefon",   
         "password" => "Hasło",
 		"date_of_birth"=> "Data urodzenia",
-		"now"=> "data dzisiejsza"
+		"now"=> "data dzisiejsza",
+		"examinationName" => "Nazwa",
+		"price"=> "Cena",
 	),
 
 );

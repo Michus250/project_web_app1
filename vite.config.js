@@ -10,6 +10,7 @@ export default defineConfig({
                 'resources/js/changeHours.js',
                 'resources/js/createEmployee.js',
                 'resources/js/createExamination.js',
+                'resources/js/createVisit.js',
             ],
             refresh: true,
         }),

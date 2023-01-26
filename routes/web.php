@@ -38,6 +38,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::middleware(['can:isEmployee'])->group(function (){
         Route::get('/createExamination',[App\Http\Controllers\ExaminationController::class, 'createExamination']);
         Route::post('/createExamination',[App\Http\Controllers\ExaminationController::class, 'createExaminationPost']);
+        Route::delete('/createExamination',[App\Http\Controllers\ExaminationController::class, 'deleteExamination']);
+    });
+    Route::middleware(['can:isUser'])->group(function () {
+        Route::get('/createVisit',[App\Http\Controllers\PageController::class, 'createVisit']);
+        Route::post('/createVisit',[App\Http\Controllers\ScheludeVisitsController::class, 'createVisit']);
+        
     });
     
 
@@ -50,7 +56,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/receptionHours', [App\Http\Controllers\PageController::class, 'receptionHours'])->name('home');
-Route::get('/contact', [App\Http\Controllers\PageController::class, 'contact'])->name('home');
+Route::get('/receptionHours', [App\Http\Controllers\PageController::class, 'receptionHours']);
+Route::get('/contact', [App\Http\Controllers\PageController::class, 'contact']);
 
 

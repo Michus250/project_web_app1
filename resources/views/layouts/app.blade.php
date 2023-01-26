@@ -47,6 +47,12 @@
                             <a class="nav-link" href="{{asset("/createExamination")}}">{{ __('Create examination') }}</a>
                         </li>
                         @endcan
+                        @can('isUser')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{asset("/createVisit")}}">{{ __('Make an appointment') }}</a>
+                        </li>
+                        @endcan
+                        
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -89,6 +95,7 @@
                                     {{ __('change_hours') }}
                                 </a>
                                  @endcan
+                                
                                  <a class="dropdown-item" href="{{asset('/changeData')}}">
                                     {{ __('change_data') }}
                                 </a>
