@@ -47,9 +47,17 @@
                             <a class="nav-link" href="{{asset("/createExamination")}}">{{ __('Create examination') }}</a>
                         </li>
                         @endcan
+                        @can('isDoctor')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{asset("/endExamination")}}">{{ __('End Examination') }}</a>
+                        </li>
+                        @endcan
                         @can('isUser')
                         <li class="nav-item">
                             <a class="nav-link" href="{{asset("/createVisit")}}">{{ __('Make an appointment') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{asset("/userExamination")}}">{{ __('Your examination') }}</a>
                         </li>
                         @endcan
                         

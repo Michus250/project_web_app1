@@ -49,11 +49,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function medical_examination()
+    public function medical_examinations()
     {
         return $this->hasMany(Medical_examination::class);
     }
-    public function shedule_visit()
+    public function shedule_visits()
     {
         return $this->hasMany(Shedule_visit::class);
     }

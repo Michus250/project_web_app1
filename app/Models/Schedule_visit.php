@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Schedule_visit extends Model
 {
     use HasFactory;
@@ -19,9 +20,9 @@ class Schedule_visit extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function employee()
+    public function employees()
     {
-        return $this->belongsTo(Employee::class);
+        return $this->belongsTo(Employee::class, 'employee_id');
     }
 
 }

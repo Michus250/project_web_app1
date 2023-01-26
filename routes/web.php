@@ -31,6 +31,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::middleware(['can:isDoctor'])->group(function () {
         Route::get('/changeHours',[App\Http\Controllers\EmployeeControler::class, 'changeHoursDoctor']);
         Route::post('/changeHours',[App\Http\Controllers\EmployeeControler::class, 'changeHoursDoctorJson']);
+        Route::get('/endExamination',[App\Http\Controllers\PageController::class, 'endExamination']);
+        Route::post('/endExamination',[App\Http\Controllers\ScheludeVisitsController::class, 'endExamination']);
         
         
     });
@@ -43,6 +45,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::middleware(['can:isUser'])->group(function () {
         Route::get('/createVisit',[App\Http\Controllers\PageController::class, 'createVisit']);
         Route::post('/createVisit',[App\Http\Controllers\ScheludeVisitsController::class, 'createVisit']);
+        Route::get('/userExamination',[App\Http\Controllers\PageController::class, 'userExamination']);
         
     });
     

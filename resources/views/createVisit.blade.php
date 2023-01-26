@@ -22,7 +22,7 @@
             
             </select>
             <div class="card">
-                <div class="card-header">{{ __('reception_hours') }}</div>
+                <div class="card-header">{{ __('Make an apointment') }}</div>
 
                 <div class="card-body">
                     
@@ -76,7 +76,7 @@
                                 <form action="{{asset("/createVisit")}}" method="post">
                                     @csrf
                                  <td class="align-middle col-3">
-                                    <input  class="form-control col-3 timepicker{{$doctor->employees->id}}{{$item1->englishDayOfWeek}}" id="hourbutton{{$doctor->employees->id}}{{$item1->englishDayOfWeek}}" name="hour">
+                                    <input  class="form-control col-3 timepicker{{$doctor->employees->id}}{{$item1->englishDayOfWeek}}" id="hourbutton{{$doctor->employees->id}}{{$item1->englishDayOfWeek}}" name="hour" autocomplete="off">
                                    
                                 </td>
                                 <td>
@@ -87,7 +87,7 @@
                                         <input style="display:none;"  name="date"  value="{{$item1->format('Y-m-d')}}">
                                         
 
-                                    <input type="submit" class="btn btn-primary button-edit my-1 mx-1" name ={{$doctor->employees->id}} value ="{{__("Change")}}" id="button{{$doctor->employees->id}}{{$item1->englishDayOfWeek}}" >
+                                    <input type="submit" class="btn btn-primary button-edit my-1 mx-1" name ={{$doctor->employees->id}} value ="{{__("Make an apointment")}}" id="button{{$doctor->employees->id}}{{$item1->englishDayOfWeek}}" >
                                     </form>
                                     {{-- <button   class="btn btn-primary button-edit my-1 mx-1" name ={{$doctor->employees->id}} value ="{{$item1->format('Y-m-d')}}" id="button{{$doctor->employees->id}}{{$item1->englishDayOfWeek}}" >{{__("Change")}}</button>     --}}
                                 </td>  

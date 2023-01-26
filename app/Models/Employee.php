@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Users_examination;
 
 class Employee extends Model
 {
@@ -16,11 +17,11 @@ class Employee extends Model
         'work_hours',
     ];
 
-    public function user()
+    public function users()
     {
-        return $this->hasOne('App\Model\User');
+        return $this->hasOne(User::class, 'id');
     }
-    public function users_examination()
+    public function users_examinations()
     {
         return $this->hasMany(Users_examination::class);
     }
