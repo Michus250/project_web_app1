@@ -78,22 +78,23 @@
                                 <br>
                                 {{__($item1->englishDayOfWeek)}}
                                 </td>
-                                <form action="{{asset("/createVisit")}}" method="post">
+                                <form action="{{asset("/createVisit")}}" method="post" name ="form{{$id}}" >
                                     @csrf
-                                 <td class="align-middle col-3">
-                                    <input  class="form-control col-3 timepicker{{$id}}{{$item1->englishDayOfWeek}}" id="hourbutton{{$id}}{{$item1->englishDayOfWeek}}" name="hour" autocomplete="off">
-                                   
+                                 <td class="align-middle col-3" name="time{{$id}}">
+                                    
+                                    {{-- <input  class="form-control col-3 timepicker{{$id}}{{$item1->englishDayOfWeek}}" id="hourbutton{{$id}}{{$item1->englishDayOfWeek}}" name="hour" autocomplete="off">
+                                    <div name = "time{{$id}}"></div> --}}
+                                    <select class ="form-control col-3" name="dateJs" id = "select{{$item1->englishDayOfWeek}}{{$id}}"></select>
                                 </td>
                                 <td>
                                     
                                         
-                                        <input style="display:none;" hidden name="day"  value="{{$item1->englishDayOfWeek}}">
-                                        <input style="display:none;"hidden  name="id"  value="{{$doctor->employees->id}}">
-                                        <input style="display:none;" hidden name="date"  value="{{$item1->format('Y-m-d')}}">
-                                        
+                                    <input style="display:none;"hidden  name="id"  value="{{$doctor->employees->id}}">
+                                    {{-- <input style="display:none;"hidden id="dateExamination{{$item1->englishDayOfWeek}}{{$id}}"  name="dateExamination"  value=" " class="date{{$id}}">     --}}
 
                                     <input type="submit" class="btn btn-primary button-edit my-1 mx-1" name ={{$id}} value ="{{__("Make an apointment")}}" id="button{{$id}}{{$item1->englishDayOfWeek}}" >
-                                    </form>
+
+                                </form>
                                     {{-- <button   class="btn btn-primary button-edit my-1 mx-1" name ={{$id}} value ="{{$item1->format('Y-m-d')}}" id="button{{$id}}{{$item1->englishDayOfWeek}}" >{{__("Change")}}</button>     --}}
                                 </td>  
                                <td style="display:none;">

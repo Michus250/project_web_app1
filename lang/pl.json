@@ -49,5 +49,7 @@
     "change_hours":"Zmień godziny",
     "Logout":"Wyloguj",
     "create_employee":"Utwórz pracownika",
-    "show_all":"Pokaż wszystkich"
+    "show_all":"Pokaż wszystkich",
+    "End Examination": "Zakończ wizytę",
+    "Create examination": "Utwórz badanie"
 }

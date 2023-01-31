@@ -15,7 +15,7 @@ $i=0;
                 
             
             <div class="card">
-                <div class="card-header">{{$users[$i]->name}} {{$users[$i]->surname}}</div>
+                <div class="card-header">{{$users[$i]->name}} {{$users[$i]->surname}} {{$visit->date}}</div>
                 <div class="card-body">
                     <form action="{{asset("/endExamination")}}" method="post">
                         @csrf

@@ -29,7 +29,7 @@
                             <tr>
                             <td class="align-middle">
                                
-                                        {{$doctors[$i]->name}} {{$doctors[$i]->surname}} {{$doctors[$i]->id}}
+                                        {{$doctors[$i]->name}} {{$doctors[$i]->surname}}
                                 </td>
                                 @php
                                     $i++;

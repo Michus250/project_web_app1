@@ -15,7 +15,7 @@
             </li>
             <li>
               <i class="fa fa-envelope"></i>
-              <a href="mailto:info@dentalclinic.com">info@dentalclinic.com</a>
+              <a href="mailto:info@dentalclinic.com">info@pollub.pl</a>
             </li>
             <li>
               <i class="fa fa-map-marker"></i>

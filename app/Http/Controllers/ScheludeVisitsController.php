@@ -15,15 +15,20 @@ use DateTime;
 class ScheludeVisitsController extends Controller
 {
     public function createVisit(Request $req){
+        $this->validate(request(), [
+            "dateJs" => ['unique:App\Models\Schedule_visit,date,employee_id']
+          ]);
+        // dd($req->all());
         foreach($req as $item){
             $item = $item = filter_var($item, FILTER_SANITIZE_STRING);
         }
+        
         $visit = new Schedule_visit;
         $visit->user_id = Auth::user()->id;
         $visit->employee_id = $req['id'];
-        $date = $req['date']." ".$req['hour'].":00";
+        // $date = $req['date']." ".$req['hour'].":00";
         // dd($req['date']);
-        $dateSave = DateTime::createFromFormat('Y-m-d H:i:s', $date);
+        $dateSave = DateTime::createFromFormat('d-m-Y H:i:s', $req['dateJs']);
         $visit->date = $dateSave;
         // dd($dateSave);
         $visit->save();
